@@ -1,0 +1,26 @@
+.footer {
+  color: white;
+  background-color: rgb(42, 41, 41);
+  height: 8rem;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Icons */
+.footericons i {
+  color: chartreuse;
+  font-size: 1.5rem;
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.footericons i:hover {
+  opacity: 0.8;
+}
+
+.footerpara {
+  font-size: 1.1rem;
+  /* margin-top: 1rem; */
+}

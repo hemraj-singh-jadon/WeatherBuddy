@@ -1,0 +1,215 @@
+/* ---------------- ROOT PAGE ---------------- */
+
+.aq-page {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---------------- HERO ---------------- */
+
+.aq-hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.aq-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: var(--hero-color);
+}
+
+.aq-hero p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ---------------- SECTION ---------------- */
+
+.aq-section {
+  max-width: 900px;
+  margin: 80px auto;
+  line-height: 1.8;
+}
+
+.aq-section h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+}
+
+.aq-section p {
+  font-size: 1.05rem;
+  margin-bottom: 15px;
+  opacity: 0.95;
+}
+
+/* ---------------- AQI CARD ---------------- */
+
+.aq-card {
+  max-width: 900px;
+  margin: 0 auto 100px;
+  padding: 35px 40px;
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.aq-city {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+.aq-note {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+/* AQI MAIN */
+
+.aq-main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.aq-value {
+  font-size: 4.5rem;
+  font-weight: 700;
+}
+
+.aq-level {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* AQI DESCRIPTION */
+
+.aq-desc {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+/* POLLUTANTS */
+
+.aq-pollutants {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.aq-pollutants div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aq-pollutants span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.aq-pollutants strong {
+  font-size: 1.3rem;
+}
+
+/* ---------------- PM INFO GRID ---------------- */
+
+.aq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.aq-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.aq-box:hover {
+  transform: translateY(-5px);
+  background: rgba(127, 255, 0, 0.1);
+}
+
+
+.aq-box h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.aq-box p {
+  font-size: 1rem;
+}
+
+/* ---------------- AQI TABLE ---------------- */
+
+.aq-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.aq-table th {
+  text-align: left;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.aq-table td {
+  padding: 12px 10px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ---------------- TIPS ---------------- */
+
+.aq-tips {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 30px;
+}
+
+.aq-tips li {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.aq-tips li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--hero-color);
+  font-weight: bold;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 768px) {
+  .aq-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .aq-value {
+    font-size: 3.2rem;
+  }
+
+  .aq-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aq-pollutants {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .aq-card {
+    padding: 25px;
+  }
+}

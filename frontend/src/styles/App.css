@@ -1,0 +1,30 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  text-align: center;
+}
+
+.main-content {
+  flex: 1;
+  padding-block: 3rem 8rem;
+  min-height: calc(100vh - 60px - 8rem);
+}
+
+
+.main-content.light {
+  background-color: #e9e6e1;   
+  color: #1f1f1f;              
+  transition: all 0.4s ease;
+  --hero-color: #399139;
+}
+
+.main-content.dark {
+  background-color: black;   
+  color: white;             
+  transition: all 0.4s ease;
+  --hero-color: #7fff00;
+}

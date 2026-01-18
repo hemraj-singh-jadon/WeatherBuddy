@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WeatherBuddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="fblogo.png" type="image/x-icon" />
+    <style>
+      /* Existing styles unchanged */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: #f0f2f5;
+        color: #1c1e21;
+      }
+
+      /* Top Bar */
+      .topbar {
+        height: 56px;
+        background: #ffffff;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #1877f2;
+      }
+
+      .login {
+        background: #1877f2;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        margin-left: 0.4rem;
+      }
+
+      .login:hover {
+        opacity: 0.9;
+      }
+
+      /* Cover */
+      .cover {
+        height: 280px;
+        background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=900&auto=format&fit=crop&q=60") center/cover;
+        position: relative;
+        z-index: -1;
+      }
+
+      /* Header Info */
+      .header-info {
+        max-width: 1100px;
+        margin: -90px auto 0;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .profile-wrapper {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        flex: 1 1 100%;
+        min-width: 220px;
+      }
+
+      .avatar {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        background: #fff;
+        flex-shrink: 0;
+      }
+
+      .profile-wrapper h2 {
+        margin: 0;
+      }
+
+      .profile-wrapper p {
+        margin-top: 0.4rem;
+        color: #65676b;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .mtd {
+          margin-top: 120px;
+        }
+
+      #badge {
+        height: 18px;
+        vertical-align: middle;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .actions button {
+        padding: 0.55rem 1rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .actions button:hover {
+        opacity: 0.9;
+      }
+
+      .follow {
+        background: #1877f2;
+        color: white;
+      }
+
+      .message {
+        background: #e4e6eb;
+      }
+
+      /* Layout */
+      .layout {
+        max-width: 1100px;
+        margin: 3rem auto 1rem;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem 2rem;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+      }
+
+      /* Sidebar */
+      .about p {
+        font-size: 0.95rem;
+        color: #444;
+        line-height: 1.5;
+      }
+
+      /* Feed */
+      .feed {
+        max-height: 70vh;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+      }
+
+      .post {
+        margin-bottom: 1.5rem;
+      }
+
+      .post-header {
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+
+      .post-time {
+        font-size: 0.85rem;
+        color: #65676b;
+        margin-bottom: 0.6rem;
+      }
+
+      .post p {
+        margin: 0.5rem 0;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      .post img {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 0.7rem;
+        height: auto;
+      }
+
+      .post-actions {
+        font-size: 0.9rem;
+        color: #65676b;
+        margin-top: 0.6rem;
+      }
+
+      /* Scrollbar */
+      .feed::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .feed::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .header-info {
+          flex-direction: column;
+          align-items: center;
+          margin-top: -70px;
+          text-align: center;
+        }
+
+        .profile-wrapper {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .mtd {
+          margin-top: 50px;
+        }
+
+        .actions {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .cover {
+          height: 200px;
+        }
+
+        .avatar {
+          width: 140px;
+          height: 140px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .topbar {
+          font-size: 1.2rem;
+          padding: 0 1rem;
+        }
+
+        .login {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.85rem;
+        }
+
+        .cover {
+          height: 150px;
+        }
+
+        .avatar {
+          width: 100px;
+          height: 100px;
+        }
+
+        .profile-wrapper p {
+          font-size: 0.85rem;
+        }
+
+        .post p {
+          font-size: 0.9rem;
+        }
+
+        .mtd {
+          margin-top: 30px;
+        }
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      Fackbook
+      <div class="btn-log">
+        <button class="login">Log in</button>
+        <button class="login">Sign up</button>
+      </div>
+    </div>
+
+    <div class="cover"></div>
+
+    <div class="header-info">
+      <div class="profile-wrapper">
+        <img class="avatar" src="wind1.png" alt="Profile Photo"/>
+        <div class="mtd">
+          <h2>WeatherBuddy <img src="image.png" alt="badge" id="badge" /></h2>
+          <p>
+            Your personal weather companion. Get real-time weather, 3-day forecasts, air quality, and city comparisons.
+            <br />
+            Stay updated wherever you are and plan your day with confidence.
+            <br />
+            Explore more at: https://weatherbuddy.app
+          </p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="follow">Follow</button>
+        <button class="message">Message</button>
+      </div>
+    </div>
+
+    <div class="layout">
+      <!-- Sidebar -->
+      <div class="card about">
+        <h3>About</h3>
+        <p>
+          WeatherBuddy simplifies your weather experience. Follow for interactive forecasts, temperature comparisons, and AQI insights. Built as a SPA with clean UI and intelligent error handling.
+        </p>
+      </div>
+
+      <!-- Feed -->
+      <div class="feed">
+        <div class="card post">
+          <div class="post-header">WeatherBuddy</div>
+          <div class="post-time">Just now</div>
+          <p>
+            Plan your day better! Check real-time weather updates and get 3-day forecasts at a glance.
+          </p>
+          <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?w=900&auto=format&fit=crop&q=60" alt="Weather Forecast"/>
+        </div>
+
+        <div class="card post">
+          <div class="post-header">WeatherBuddy</div>
+          <div class="post-time">Today · 3:45 PM</div>
+          <p>
+            Track air quality across cities and stay safe. WeatherBuddy provides live AQI details for your location.
+          </p>
+          <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Air Quality"/>
+        </div>
+
+        <div class="card post">
+          <div class="post-header">WeatherBuddy</div>
+          <div class="post-time">Yesterday · 6:15 PM</div>
+          <p>Compare temperatures across major Indian cities and make informed plans.</p>
+          <img src="https://plus.unsplash.com/premium_photo-1667143324668-064f130f731d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHdlYXRoZXJ8ZW58MHx8MHx8fDA%3D" alt="City Temperature Comparison"/>
+        </div>
+
+        <div class="card post">
+          <div class="post-header">WeatherBuddy</div>
+          <div class="post-time">Today · 10:45 AM</div>
+          <p>Dark/light mode keeps your weather experience comfortable day and night.</p>
+          <img src="https://images.unsplash.com/photo-1514632595-4944383f2737?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Dark Light Mode"/>
+        </div>
+      </div>
+    </div>
+    <footer>© 2026 WeatherBuddy · Demo Social Page</footer>
+  </body>
+</html>

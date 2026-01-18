@@ -1,0 +1,154 @@
+/* Base Styles */
+.about-page {
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  color: var(--hero-color);
+  margin-bottom: 20px;
+}
+
+.about-hero p {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: inherit; /* inherits theme color */
+}
+
+/* Mission Section */
+.about-mission {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+}
+
+.about-mission h2 {
+  color: var(--hero-color);
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.about-mission p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* Features Section */
+.about-features {
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+}
+
+.about-features h2 {
+  color: var(--hero-color);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Grid: 3 columns */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  height: 500px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 2px 4px 4px grey;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(127, 255, 0, 0.1);
+}
+
+.feature-card h3 {
+  color: var(--hero-color);
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Why Choose Section */
+.about-why {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+}
+
+.about-why h2 {
+  color: var(--hero-color);
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.about-why p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* Call-to-Action Section */
+.about-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.about-cta button {
+  padding: 12px 30px;
+  background-color: var(--hero-color);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.about-cta button:hover {
+  background-color: #5ccc00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .about-mission h2,
+  .about-features h2,
+  .about-why h2 {
+    font-size: 1.8rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

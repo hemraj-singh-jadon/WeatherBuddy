@@ -1,0 +1,185 @@
+.navdiv {
+  height: 4.5rem;
+  width: 100%;
+  background-color: rgb(42, 41, 41);
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  user-select: none;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #7fff00;
+  font-size: 1.3rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-decoration: none;
+  cursor: default;
+}
+
+.logo-link img {
+  height: 30px;
+  width: auto;
+}
+
+.navdiv .anchor .nav-link {
+  text-decoration: none;
+  padding: 0.325rem 0.6rem;
+  border-radius: 0.4rem;
+  color: #f5f5f5;
+  font-weight: 500;
+}
+
+.navdiv .anchor .nav-link:hover {
+  background-color: #f5f5f5;
+  color: rgb(31, 31, 31);
+}
+
+.search form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.search .input-search {
+  height: 2.2rem;
+  width: 350px;
+  padding: 0 12px;
+  border-radius: 0.3rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  position: relative;
+}
+
+.search .button {
+  height: 2rem;
+  padding: 0 12px;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: #80ff00c6;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.search .button:hover {
+  opacity: 0.8;
+}
+
+/* suggestion box styling  */
+
+#searchinputbox {
+  width: 375px;
+  height: 305px;
+  max-height: 350px;
+  background-color: rgba(42, 41, 41, 0.7);
+  backdrop-filter: blur(80px);
+  overflow-y: auto;
+  border-radius: 0.7rem;
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+}
+
+#searchinputbox ul {
+  margin: 0;
+  padding: 0;
+}
+
+.searchanc {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  color: rgb(20, 19, 19);
+  margin-top: 0.4rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  color: white;
+  font-size: 1rem;
+  white-space: normal;
+}
+
+.searchanc:hover {
+  background-color: rgba(85, 87, 90, 0.7);
+}
+
+
+#country-flag-container {
+  width: 3rem;
+  height: 2rem;
+  border-radius: 10%;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  display: inline-block;
+  transform: scale(0.6);
+}
+
+/* div animation for sliding  */
+
+.suggestions {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.suggestions.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* switch dark light mode logic */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #4b9a31;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: 0px;
+  bottom: 2px;
+  background: rgb(22, 21, 21);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background: #4b9a31;
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
