@@ -12,10 +12,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Enable CORS for your Cloudflare Pages frontend
-app.use(cors({
-  origin: 'https://weatherbuddy.pages.dev/',
-  methods: ['GET']
-}));
+const allowedOrigins = [
+  "https://weatherbuddy.pages.dev",
+  "http://localhost:5173"
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET"]
+  })
+);
 
 // Serve React SPA
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
