@@ -41,10 +41,11 @@ export default function Weather_App() {
   }
 
   useEffect(() => {
+    const BASE_URL = "https://weatherbuddy-18d2.onrender.com";
     async function fetchCityAndWeather() {
       try {
         // Fetch city from backend
-        const locRes = await fetch("/api/location");
+        const locRes = await fetch(`${BASE_URL}/api/location`);
         if (!locRes.ok) throw new Error("Failed to fetch city");
         const locData = await locRes.json();
         const userCity = locData.city;
