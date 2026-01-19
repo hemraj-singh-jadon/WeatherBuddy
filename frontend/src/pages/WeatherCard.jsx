@@ -2,19 +2,22 @@ import "../styles/WeatherCard.css"
 
 export default function Weathercard({ weatherData: weather }) {
 
+  // Then guard against null / loading
 
-  //Fumction to calculate AQI
+  if (!weather || !weather.current) {
+    return null;
+  }
 
   // Safe destructure air_quality with defaults
+
   const airQuality = weather.current.air_quality || {};
   const aqiIndex = airQuality["us-epa-index"] || 0;
   const pm25 = airQuality.pm2_5 ?? 0;
   const pm10 = airQuality.pm10 ?? 0;
 
-  // Updated calculateAQI to handle missing pm25
-  function calculateAQI(pm) {
-    if (!pm || pm === 0) return "-"; // fallback for missing data
 
+  function calculateAQI(pm) {
+    if (!pm || pm === 0) return "-"; 
     const ranges = [
       { cLow: 0, cHigh: 12, aLow: 0, aHigh: 50 },
       { cLow: 12.1, cHigh: 35.4, aLow: 51, aHigh: 100 },

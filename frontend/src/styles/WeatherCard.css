@@ -16,6 +16,7 @@
   box-sizing: border-box;
   user-select: none;
   box-shadow: 2px 4px 8px grey;
+  max-width: 100%;
 }
 
 #weather-container::before {
@@ -59,6 +60,44 @@
   z-index: 1;
 }
 
+#Loading-container {
+  position: relative;
+  height: 25rem;
+  width: 55rem;
+  margin: 7rem auto;
+  border-radius: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 3rem;
+  z-index: 1;
+  box-shadow: 2px 4px 8px grey;
+  background: linear-gradient(120deg, black, gray);
+}
+
+.loading-text {
+  position: relative;
+  z-index: 1;
+}
+
+.error-svg-icon {
+  animation: spin 2s linear infinite;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Animated city icon */
 .city-icon {
   width: 180px;
@@ -81,6 +120,7 @@
     opacity: 0.95;
   }
 }
+
 
 /* end  */
 
@@ -106,6 +146,7 @@
 #temp {
   font-size: 4rem;
 }
+
 
 .card {
   grid-column: 3;
@@ -240,4 +281,27 @@
 }
 .about p {
   margin-bottom: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+  #weather-container {
+    transform: scale(0.9);
+  }
+
+  .about {
+    transform: scale(0.9);
+  }
+}
+
+.city {
+  min-width: 0;
+}
+
+.city h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin: 0;
 }

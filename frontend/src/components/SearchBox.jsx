@@ -16,7 +16,7 @@ export default function SearchBox({ onSearch }) {
 
     try {
       const res = await fetchWeather(city);
-      console.log(res)
+      // console.log(res)
 
       if (res.error) {
         onSearch(dummyWeatherForError);
